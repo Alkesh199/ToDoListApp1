@@ -93,9 +93,10 @@ const ToDo = () =>{
                <p className="heading">Save Your Goal Here....</p>
                <div className="list-main-div">
                     <div className="add-text-div">
-                        <input type="text"  value={inputData} placeholder="type here to add text" onChange={updateInputData}></input>
+                        <input type="text"  value={inputData} placeholder="type here to add text" maxLength={60} onChange={updateInputData}></input>
                         <FontAwesomeIcon icon={faPlus} className="plusIcon icons" onClick={updateItemList}/>
                     </div>
+                    {inputData.length>0 ? <p className="char-limit-text">Remaining char to add : <span>{60-inputData.length}</span></p> : <p className="max-char-text">Max char Limit : 60</p>}
                     {todoList.length>0 && <p className = "heading">To Do Items: </p>}
 
                     {todoList.map((ele,index)=>{

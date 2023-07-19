@@ -88,6 +88,10 @@ text-align: center;
     border-radius: 4px;
 }
 
+.add-text-div{
+  margin-bottom:20px;
+}
+
 .list-item-div{
   margin-top:40px;
   min-height:90px;
@@ -172,12 +176,18 @@ color:green;
 padding-left:10px;
 }
 
-.no-task-error{
-  color:red;
+.no-task-error,.char-limit-text{
+  
   font-size:18px;
   font-weight:bold;
+  color:red;
 }
 
+.max-char-text{
+  font-size:18px;
+  font-weight:bold;
+  color:yellow;
+}
 .deletedTaskDiv .plusIcon{
   border:2px solid white;
   color:white;
@@ -186,6 +196,11 @@ padding-left:10px;
   border:2px solid black;
   color:black;
 }
+
+.char-limit-text span{
+  color:green;
+}
+
 
 
 
