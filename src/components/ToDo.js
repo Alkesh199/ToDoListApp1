@@ -10,6 +10,7 @@ const ToDo = () =>{
     const [todoList,setToDoList] = useState([]);
     const [completedTaskList,setCompleteTaskList] = useState([]);
     const [deletedTaskList,setDeletedTaskList] = useState([]);
+    const [showNoTaskError,setShowNoTaskError] = useState(false);
 
     console.log(deletedTaskList);
 
@@ -20,10 +21,11 @@ const ToDo = () =>{
     const updateItemList = () =>{
         if(inputData.length>0){
             setToDoList([...todoList,inputData]);
+            setShowNoTaskError(false);
         }
-        else{
-            setToDoList([...todoList]);
-        }
+        // else{
+        //     setToDoList([...todoList]);
+        // }
          
          setInputData("");
     }
@@ -31,6 +33,12 @@ const ToDo = () =>{
     const clearItems = () =>{
         if(todoList.length>0){
             setDeletedTaskList([...deletedTaskList,...todoList]);
+            
+        }
+
+        if(todoList.length==0){
+            //need to add error message
+            setShowNoTaskError(true);
         }
        
         setToDoList([]);
@@ -76,6 +84,7 @@ const ToDo = () =>{
                     })}
 
                   <div className="button-div">
+                    {showNoTaskError && <p className="no-task-error"><span>there is no task to clear, please add some task</span></p>}
                     <button type="button" onClick={clearItems}>Clear All Items</button>
                   </div>
 

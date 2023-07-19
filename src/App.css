@@ -117,6 +117,7 @@ width:500px;
   align-items: center;
   justify-content: center;
   margin-top:30px;
+  flex-direction: column;
 }
 
 .button-div button{
@@ -169,6 +170,12 @@ hr{
 font-weight: bold;
 color:green;
 padding-left:10px;
+}
+
+.no-task-error{
+  color:red;
+  font-size:18px;
+  font-weight:bold;
 }
 
 @media screen and (max-width:768px) {
