@@ -11,7 +11,7 @@ const ToDo = () =>{
     const [completedTaskList,setCompleteTaskList] = useState([]);
     const [deletedTaskList,setDeletedTaskList] = useState([]);
 
-    console.log(todoList);
+    console.log(deletedTaskList);
 
     const updateInputData = (e) =>{
         setInputData(e.target.value);
@@ -30,7 +30,7 @@ const ToDo = () =>{
 
     const clearItems = () =>{
         if(todoList.length>0){
-            setDeletedTaskList([...deletedTaskList,todoList]);
+            setDeletedTaskList([...deletedTaskList,...todoList]);
         }
        
         setToDoList([]);
@@ -56,7 +56,7 @@ const ToDo = () =>{
     return(
         <div className="inner-container">
                <AppImageComponent></AppImageComponent>
-               <p className="heading">Save Your To Do List Here....</p>
+               <p className="heading">Save Your Goal Here....</p>
                <div className="list-main-div">
                     <div className="add-text-div">
                         <input type="text"  value={inputData} placeholder="type here to add text" onChange={updateInputData}></input>
@@ -83,7 +83,7 @@ const ToDo = () =>{
                  {deletedTaskList.length==0 ? <p className = "heading">There is No Deleted Task Till Now.</p> : <p className = "heading">Deleted Task List </p>} 
                   {deletedTaskList.map((ele,index)=>{
                         return(
-                            <div className="list-item-div">
+                            <div className="list-item-div deletedTaskDiv">
                                   <p>{ele}</p>
                             </div>
                         );
@@ -96,7 +96,7 @@ const ToDo = () =>{
               
                {completedTaskList.map((ele,index)=>{
                      return(
-                         <div className="list-item-div">
+                         <div className="list-item-div completedTaskDiv">
                                <p>{ele}</p>
                          </div>
                      );
