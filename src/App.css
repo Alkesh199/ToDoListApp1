@@ -1,0 +1,146 @@
+*{
+  margin:0px;
+  padding:0px;
+  box-sizing: border-box;
+}
+
+body{
+  background-color:black;
+}
+.main-container{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction:column;
+  margin:100px auto;
+  max-width:700px;
+  width:700px;
+  padding:30px;
+  height:fit-content;
+  border:4px solid red;
+  border-radius: 4px;
+  
+}
+
+.main-container:hover{
+  box-shadow: rgba(42, 190, 150, 0.35) 5px 8px 10px;
+ 
+}
+.main-container .app-img{
+  background-color: yellow;
+  width:80px;
+  height:80px;
+  border:2px solid transparent;
+  border-radius:4px;
+  
+}
+
+.main-container .app-img:hover{
+  background-color:green;
+}
+
+.heading{
+color:white;
+font-size:20px;
+font-weight: bold;
+margin-top:40px;
+text-align: center;
+}
+.app-image-div{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.list-main-div{
+  margin-top:40px;
+}
+
+
+
+.icons{
+  width:30px;
+  height:30px;
+  color:red;
+}
+
+.plusIcon{
+  
+  border:2px solid rgb(17, 17, 77);
+  border-radius: 50%;
+  color:rgb(17, 17, 77);
+}
+
+.checkIcon{
+  color:green;
+  width:35px;
+  height:35px;
+}
+
+.add-text-div,.list-item-div{
+  display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background-color: white;
+    padding:2px 15px;
+    border:3px solid transparent;
+    border-radius: 4px;
+}
+
+.list-item-div{
+  margin-top:40px;
+  min-height:90px;
+}
+
+.list-item-div p{
+  width:70%;
+  color:black;
+  font-size:20px;
+  font-weight:700;
+  line-height:22px;
+
+}
+
+input{
+height: 35px;
+border: none;
+outline:none;
+font-size:16px;
+font-weight:bold;
+width:500px;
+}
+
+
+.button-div{
+  display:flex;
+  align-items: center;
+  justify-content: center;
+  margin-top:30px;
+}
+
+.button-div button{
+  padding:10px 5px;
+  font-size:18px;
+  font-weight: bold;
+  
+  background-image: linear-gradient(to right, red , yellow);
+  border:2px solid linear-gradient(to right, red , yellow);
+  border-radius: 5px;
+}
+
+.button-div button:hover{
+  background-image: linear-gradient(to right, yellow , red);
+}
+hr{
+  margin-top:50px;
+}
+@media screen and (max-width:768px) {
+  .main-container,input{
+    width:90%;
+  }
+
+  .icons{
+    width:20px;
+    height:20px;
+  }
+}
