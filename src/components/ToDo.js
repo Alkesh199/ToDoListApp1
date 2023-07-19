@@ -46,6 +46,10 @@ const ToDo = () =>{
         
     }
 
+    
+    
+    
+
     const itemDeleteHandler = (itemIndex) =>{
         const filteredList = todoList.filter((ele,index)=>index!==itemIndex);
         setToDoList(filteredList);
@@ -59,8 +63,30 @@ const ToDo = () =>{
         const filteredCompletedList = todoList.filter((ele,index)=>index==itemIndex);
         setCompleteTaskList([...completedTaskList,filteredCompletedList]);
     }
+   
+     
+    //add item back to todoList and remove it from  deletedTaskList
+    const backToDoDeletedHandler = (itemIndex) =>{
+        const newItem = deletedTaskList[itemIndex];
+        setToDoList([...todoList,newItem]);
+        setShowNoTaskError(false);
+        //remove itemIndex element from deletedTaskList
+        const newDeletedTaskList = deletedTaskList.filter((ele,index)=>index!=itemIndex);
+        setDeletedTaskList(newDeletedTaskList);
+    }
+
+    const backToDoCompletedHandler = (itemIndex) =>{
+        const newItem = completedTaskList[itemIndex];
+        setToDoList([...todoList,newItem]);
+        setShowNoTaskError(false);
+        //remove itemIndex element from deletedTaskList
+        const newCompletedTaskList = completedTaskList.filter((ele,index)=>index!=itemIndex);
+        setCompleteTaskList(newCompletedTaskList);
+    }
 
 
+
+    
     return(
         <div className="inner-container">
                <AppImageComponent></AppImageComponent>
@@ -74,7 +100,7 @@ const ToDo = () =>{
 
                     {todoList.map((ele,index)=>{
                         return(
-                            <div className="list-item-div">
+                            <div className="list-item-div" key={index}>
                          <p>{ele}</p>
                          <FontAwesomeIcon icon={faTrash} className="icons" onClick={()=>itemDeleteHandler(index)}/>
                          <FontAwesomeIcon icon={faCheckCircle} className="checkIcon icons" onClick={()=>itemCompleteHandler(index)} />
@@ -92,8 +118,9 @@ const ToDo = () =>{
                  {deletedTaskList.length==0 ? <p className = "heading">There is No Deleted Task Till Now.</p> : <p className = "heading">Deleted Task List </p>} 
                   {deletedTaskList.map((ele,index)=>{
                         return(
-                            <div className="list-item-div deletedTaskDiv">
+                            <div className="list-item-div deletedTaskDiv" key={index}>
                                   <p>{ele}</p>
+                                  <FontAwesomeIcon icon={faPlus} className="plusIcon icons" onClick={()=>backToDoDeletedHandler(index)}/>
                             </div>
                         );
                          
@@ -107,6 +134,7 @@ const ToDo = () =>{
                      return(
                          <div className="list-item-div completedTaskDiv">
                                <p>{ele}</p>
+                               <FontAwesomeIcon icon={faPlus} className="plusIcon icons" onClick={()=>backToDoCompletedHandler(index)}/>
                          </div>
                      );
                       

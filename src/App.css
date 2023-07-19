@@ -178,6 +178,17 @@ padding-left:10px;
   font-weight:bold;
 }
 
+.deletedTaskDiv .plusIcon{
+  border:2px solid white;
+  color:white;
+}
+.completedTaskDiv .plusIcon{
+  border:2px solid black;
+  color:black;
+}
+
+
+
 @media screen and (max-width:768px) {
   .main-container,input{
     width:90%;
