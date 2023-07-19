@@ -40,6 +40,9 @@ body{
   background-color:green;
 }
 
+.inner-container{
+  max-width:96%;
+}
 .heading{
 color:white;
 font-size:20px;
@@ -113,6 +116,7 @@ outline:none;
 font-size:16px;
 font-weight:bold;
 width:500px;
+padding-right:20px;
 }
 
 
@@ -146,7 +150,7 @@ hr{
 }
 
 .list-item-div p{
-  font-size:28px;
+  font-size:24px;
 }
 .deletedTaskDiv p{
   color:white;
@@ -162,7 +166,7 @@ hr{
 }
 
 .developer-text{
-  font-size:30px;
+  font-size:26px;
   color:white;
   text-align: center;
   margin-bottom:60px;
@@ -201,7 +205,10 @@ padding-left:10px;
   color:green;
 }
 
-
+.list-item-div p{
+  word-wrap: break-word;
+  line-height: 38px;
+}
 
 
 @media screen and (max-width:768px) {
@@ -212,5 +219,8 @@ padding-left:10px;
   .icons{
     width:20px;
     height:20px;
+  }
+  .list-item-div p{
+    font-size:22px;
   }
 }

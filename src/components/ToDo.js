@@ -101,7 +101,7 @@ const ToDo = () =>{
 
                     {todoList.map((ele,index)=>{
                         return(
-                            <div className="list-item-div" key={index}>
+                            <div className="list-item-div" key={index}>      
                          <p>{ele}</p>
                          <FontAwesomeIcon icon={faTrash} className="icons" onClick={()=>itemDeleteHandler(index)}/>
                          <FontAwesomeIcon icon={faCheckCircle} className="checkIcon icons" onClick={()=>itemCompleteHandler(index)} />
