@@ -3,7 +3,8 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPlus } from "@fortawesome/free-solid-svg-icons";
 import { faTrash } from "@fortawesome/free-solid-svg-icons";
 import { faCheckCircle} from "@fortawesome/free-solid-svg-icons";
-import { useState } from "react";
+import { useState,useEffect } from "react";
+import Cookies from "js-cookie";
 
 const ToDo = () =>{
     const [inputData,setInputData] = useState("");
@@ -11,8 +12,46 @@ const ToDo = () =>{
     const [completedTaskList,setCompleteTaskList] = useState([]);
     const [deletedTaskList,setDeletedTaskList] = useState([]);
     const [showNoTaskError,setShowNoTaskError] = useState(false);
+    
+    // console.log(deletedTaskList);
+    
 
-    console.log(deletedTaskList);
+    const handleTabClose = (e) =>{
+     e.preventDefault();
+     Cookies.set("to_do_list",JSON.stringify(todoList));
+     Cookies.set("completed_task_list",JSON.stringify(completedTaskList));
+     Cookies.set("deleted_task_list",JSON.stringify(deletedTaskList));
+
+    }
+
+    window.addEventListener('beforeunload', handleTabClose);
+
+    useEffect(()=>{
+        const toDoCookie = Cookies.get("to_do_list");
+        const completedCookie = Cookies.get("completed_task_list");
+        const deletedCookie = Cookies.get("deleted_task_list");
+        if(toDoCookie || completedCookie || deletedCookie){
+            if(toDoCookie){
+                setToDoList(JSON.parse(toDoCookie));
+            }
+            if(completedCookie){
+                setCompleteTaskList(JSON.parse(completedCookie));
+            }
+
+            if(deletedCookie){
+                setDeletedTaskList(JSON.parse(deletedCookie));
+            }
+        }
+        
+        
+        
+
+        return()=>{
+           window.removeEventListener("beforeunload",handleTabClose);
+        }
+    },[]);
+
+
 
     const updateInputData = (e) =>{
         setInputData(e.target.value);
@@ -23,9 +62,6 @@ const ToDo = () =>{
             setToDoList([...todoList,inputData]);
             setShowNoTaskError(false);
         }
-        // else{
-        //     setToDoList([...todoList]);
-        // }
          
          setInputData("");
     }
@@ -46,7 +82,11 @@ const ToDo = () =>{
         
     }
 
-    
+    const clearAllList = ()=>{
+        setToDoList([]);
+        setCompleteTaskList([]);
+        setDeletedTaskList([]);
+    }
     
     
 
@@ -85,7 +125,8 @@ const ToDo = () =>{
     }
 
 
-
+   
+    
     
     return(
         <div className="inner-container">
@@ -143,8 +184,9 @@ const ToDo = () =>{
 
 
 
-                    
-                    
+    <div className="button-div">             
+     <button type="button" onClick={clearAllList}>Clear All List</button> 
+     </div>
                </div>
         </div>
     )
